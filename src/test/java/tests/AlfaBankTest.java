@@ -2,6 +2,8 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -65,8 +67,10 @@ public class AlfaBankTest {
 
     @Test
     void localTest() {
+        File file = new File("src/test/resources/Elements.html");
+        String filePath = file.getAbsolutePath();
 
-        open("file://c:\\Users\\Сода\\IdeaProjects\\QA_lesson_3\\src\\test\\resources\\Elements.html");
+        open(filePath);
 
         $("h1 div").shouldHave(text("Hello"));
 
