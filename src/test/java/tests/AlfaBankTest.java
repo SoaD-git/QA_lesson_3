@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -22,7 +21,9 @@ public class AlfaBankTest {
         $(byText("Архивные счета и депозиты")).click();
         $$(byText("Депозиты")).find(visible).click();
 
-        $("#filter").findAll("[data-widget-name=\"CatalogCard\"]").shouldHaveSize(5);
+ //       $("#filter").findAll("[data-widget-name=\"CatalogCard\"]").shouldHaveSize(5);
+
+        $("[data-widget-name=\"CatalogCard\"]").$(byText("Победа+")).click();
 
     }
 
@@ -60,5 +61,16 @@ public class AlfaBankTest {
         $("#good-to-know [data-test-id=\"tabs-list-tabTitle-2\"]").preceding(0).click();
 
         $("[data-test-id=\"accordion-header-3\"]").shouldHave(text("Как происходит возмещение средств?"));
+    }
+
+    @Test
+    void localTest() {
+
+        open("file://c:\\Users\\Сода\\IdeaProjects\\QA_lesson_3\\src\\test\\resources\\Elements.html");
+
+        $("h1 div").shouldHave(text("Hello"));
+
+    //    $("h1").$("div").shouldHave(text("Hello"));
+
     }
 }
